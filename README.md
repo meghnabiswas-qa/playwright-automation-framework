@@ -26,7 +26,7 @@ Python, Pytest, Playwright, pytest-bdd, pytest-html
 ├── PageObject/           # page object classes
 ├── utils/                # reusable helpers
 ├── assets/
-├── pytest/               # [describe what this folder holds]
+├── pytest/               # pytest basics: fixture scopes (session, module, function), markers (smoke, skip)
 ├── conftest.py           # shared fixtures
 ├── test_UIvalidations_1.py
 ├── test_MoreValidations.py
@@ -56,8 +56,11 @@ pytest --html=report.html --self-contained-html
 
 ## What each test file covers
 
-- `test_UIvalidations_1.py`, `test_MoreValidations.py`: [UI validations]
-- `test_Network1.py`, `test_Network2.py`: [network interception / mocking]
-- `test_Web_API.py`, `test_framework_Web_API.py`: [API and combined UI + API flows]
+- `test_UIvalidations_1.py`: UI flows on a practice site: login, dropdown, checkbox, adding products to the cart, checkout, and child window (popup) handling
+- `test_MoreValidations.py`: element visibility, alert dialogs, mouse hover, iframe handling, and reading a dynamic table
+- `test_Network1.py`: network interception, mocking the orders API response with a fake "No Orders" payload
+- `test_Network2.py`: request interception on the order details call, plus injecting an API-generated token into local storage to skip the UI login
+- `test_Web_API.py`: end-to-end flow: create an order through the API, log in through the UI, and verify the order in the order history
+- `test_framework_Web_API.py`: the same end-to-end flow built with the framework: page objects, API utilities, and data-driven runs from `Data/credentials.json`
 - `test_pytest-bddTest.py`: BDD scenarios with pytest-bdd
 - `test_playwrightBasics.py`: Playwright basics
